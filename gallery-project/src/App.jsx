@@ -1,34 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react'
+import Card from './components/Card';
+import axios from 'axios';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [userData, setUserData] = useState([]);
 
+  const [index, setIndex] = useState(1)
+
+
+  const getData = async () =>{
+    const response = await axios.get(`https://picsum.photos/v2/list?page=${index}&limit=14`)
+    setUserData(response.data);
+    // console.log(response.data);
+  }
+
+  useEffect(function(){
+    getData()
+  },[index])
+
+
+  let printUserData = <h3 className='text-gray-300 text-s absolute top-1/2 left-1/2 translate-x-1/2 translate-y-1/2'>Loading ....</h3>
+  if(userData.length>0){
+    printUserData = userData.map(function(elem,idx){
+
+      return <div key={idx}>
+        <Card elem={elem} />
+      </div>
+
+
+    })
+  }
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='bg-black overflow-auto h-screen p-4 text-white'>
+      <div className='flex h-[82%] flex-wrap gap-4 p-2'>
+        {printUserData}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+
+      <div className='flex justify-center gap-6 items-center p-4'>
+        <button className='bg-amber-400 text-black rounded text-sm cursor-pointer active:scale-95 px-4 py-2 font-semibold'
+        onClick={()=>{
+          if(index>1){
+            setIndex(index-1)
+            setUserData([])
+          }
+        }}
+        >
+          Prev
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <h4>Page {index}</h4>
+        <button className='bg-amber-400 text-black rounded text-sm cursor-pointer active:scale-95 px-4 py-2 font-semibold'
+        onClick={()=>{
+          setIndex(index+1)
+          setUserData([])
+        }}
+        >
+          Next
+          </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      
+    </div>
   )
 }
 
