@@ -1,8 +1,11 @@
-# React + Vite
+## 🚀 Advanced Routing
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Implemented advanced routing techniques in React using **React Router v6**.  
+This includes:
 
-Currently, two official plugins are available:
+- Nested routes for organizing components hierarchically  
+- Dynamic route parameters for handling variable paths  
+- Protected routes for authentication and role-based access  
+- Programmatic navigation using hooks like `useNavigate`  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+💡 Enables building scalable, multi-page React applications with smooth navigation.
