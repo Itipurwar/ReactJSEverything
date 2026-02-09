@@ -1,8 +1,11 @@
-# React + Vite
+## 🌐 Context API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Learned to manage global state in React using **Context API**.  
+Key points include:
 
-Currently, two official plugins are available:
+- Sharing state across multiple components without prop drilling  
+- Creating and using Context Providers  
+- Consuming context with `useContext` hook  
+- Simplifying state management in medium-sized applications  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+💡 Makes React apps cleaner and easier to maintain by avoiding deeply nested props.
